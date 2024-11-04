@@ -1,4 +1,9 @@
-export default function Country({params}:any) {
+interface CountryParams {
+  params: {
+    country_name: string;
+  };
+}
+export default function Country({params}:CountryParams) {
   const countries : {
         name : string,
         population : number,
@@ -27,7 +32,7 @@ export default function Country({params}:any) {
   function countryname(select_url :string){
       return countries.find(country=>country.name.toLowerCase()==select_url.toLowerCase());    
   }
-  let result = countryname(params.country_name)
+  const result = countryname(params.country_name)
   return (
     <div className="bg-red-600 h-screen">
       <h1 className="flex justify-center items-center h-96 font-extrabold text-5xl">Select Your Country</h1>
